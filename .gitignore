@@ -1,0 +1,19 @@
+# Carpeta de entorno virtual
+venv/
+
+# Configuraciones de VSCode
+.vscode/
+
+# Carpeta de configuración propia
+config/
+
+# Archivos de log
+*.log
+
+# Cachés de Python
+__pycache__/
+*.pyc
+
+# Secretos y archivos temporales
+.env
+*.bak
