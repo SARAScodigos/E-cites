@@ -1,6 +1,6 @@
 # Carpeta de entorno virtual
 venv/
-
+e-cites/
 # Configuraciones de VSCode
 .vscode/
 
@@ -16,4 +16,23 @@ __pycache__/
 
 # Secretos y archivos temporales
 .env
+*.bak
+# Ignorar entorno virtual de Python (usualmente en e-cites/)
+e-cites/
+venv/
+
+# Ignorar configuraciones de editores
+.vscode/
+.idea/
+
+# Ignorar archivos de configuración local
+config/
+.env
+
+# Ignorar archivos temporales, logs y cachés
+__pycache__/
+*.pyc
+*.log
+*.sqlite3
+*.db
 *.bak
