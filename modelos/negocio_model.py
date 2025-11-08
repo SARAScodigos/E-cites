@@ -8,3 +8,4 @@ class Negocio(Base):
     id = Column(Integer, primary_key=True)
     nombre = Column(String(100), nullable=False)
     descripcion = Column(String(255), nullable=True)
+    tipo = Column(String(50), nullable=False)  # ej: 'marina', 'estetica'
