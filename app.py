@@ -129,14 +129,15 @@ def hacer_reserva(identidad):
 def listar_reservas(identidad):
     try:
         tenant_id = identidad["tenant_id"]
-        usuario_id = identidad["usuario_id"]
+        usuario_id = identidad["usuario_id"] # <-- Aquí tienes el ID
         tipo_negocio = obtener_tipo_negocio_por_tenant(tenant_id)
         handler = obtener_reserva_handler(tipo_negocio, db=current_app.db, tenant_id=tenant_id)
         
-        if hasattr(handler, 'usuario_id'):
-            handler.usuario_id = usuario_id
+        # --- CAMBIO AQUÍ ---
+        # Ya no necesitamos el 'if hasattr'.
+        # Pasamos el usuario_id directamente como argumento.
+        reservas = handler.listar_reservas(usuario_id=usuario_id)
         
-        reservas = handler.listar_reservas()
         current_app.db.commit() # <-- Cierra la transacción
         return jsonify(reservas)
     except Exception as e:
