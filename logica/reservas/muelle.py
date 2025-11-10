@@ -132,8 +132,7 @@ class ReservaMuelle(ReservaBase):
             """)
             result = self.db.execute(query, {
                 "tenant_id": self.tenant_id,
-                # --- CAMBIO AQUÍ: Usamos el argumento 'usuario_id' ---
-                "usuario_id": usuario_id
+                "usuario_id": usuario_id # <-- Usamos el argumento
             }).mappings()
             
             reservas = [dict(row) for row in result]
