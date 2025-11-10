@@ -16,7 +16,13 @@ from init_db import inicializar_base_de_datos
 import os
 
 app = Flask(__name__)
-CORS(app)
+
+origins = [
+    "http://localhost:3000",
+    "https://reservas.systempiura.com",
+    "http://reservas.systempiura.com"
+]
+CORS(app, origins=origins, supports_credentials=True)
 
 # JWT Configuración
 app.config['JWT_SECRET_KEY'] = 'supersecreto'

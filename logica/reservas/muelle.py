@@ -107,7 +107,7 @@ class ReservaMuelle(ReservaBase):
             return {"error": f"Error interno del servidor: {str(e)}"}, 500
 
     
-    def listar_reservas(self):
+    def listar_reservas(self, usuario_id=None):
         try:
             query = text("""
                 SELECT rg.id AS reserva_id,
@@ -132,11 +132,12 @@ class ReservaMuelle(ReservaBase):
             """)
             result = self.db.execute(query, {
                 "tenant_id": self.tenant_id,
-                "usuario_id": getattr(self, 'usuario_id', None)
+                # --- CAMBIO AQUÍ: Usamos el argumento 'usuario_id' ---
+                "usuario_id": usuario_id
             }).mappings()
             
             reservas = [dict(row) for row in result]
-            print(f"🔍 Reservas encontradas: {len(reservas)}")
+            print(f"🔍 Filtrando por usuario_id: {usuario_id}. Reservas encontradas: {len(reservas)}")
             return reservas
             
         except Exception as e:
